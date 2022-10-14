@@ -1,5 +1,5 @@
 {
-    "name": "knowthat/log-viewer",
+    "name": "know-that/log-viewer",
     "type": "composer-plugin",
     "autoload": {
         "psr-4": {
