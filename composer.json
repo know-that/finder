@@ -1,6 +1,6 @@
 {
-    "name": "know-that/log-viewer",
-    "description": "The Know That log viewer is the view page of the larravel log.",
+    "name": "know-that/laravel-logger",
+    "description": "The know-that/laravel-logger is the view page of the larravel log.",
     "keywords": [
         "laravel",
         "log",
