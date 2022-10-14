@@ -29,7 +29,7 @@
         },
         "laravel": {
             "providers": [
-                "KnowThat\\LogViewer\\Provider"
+                "KnowThat\\LogViewer\\LoggerProvider"
             ]
         }
     }

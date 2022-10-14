@@ -4,7 +4,7 @@ namespace KnowThat\LogViewer;
 
 use Illuminate\Support\ServiceProvider;
 
-class Provider extends ServiceProvider
+class LoggerProvider extends ServiceProvider
 {
     /**
      * Register services.
