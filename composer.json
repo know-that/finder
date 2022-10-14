@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Knowthat\\LaravelLogger\\": "src"
+            "KnowThat\\LaravelLogger\\": "src"
         }
     },
     "extra": {
@@ -30,10 +30,7 @@
         "laravel": {
             "providers": [
                 "KnowThat\\LaravelLogger\\LoggerProvider"
-            ],
-            "aliases": {
-                "Logger": "KnowThat\\LaravelLogger\\Facades\\Logger"
-            }
+            ]
         }
     }
 }
