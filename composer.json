@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Knowthat\\LogViewer\\": "src/"
+            "Knowthat\\LogViewer\\": "src"
         }
     },
     "require": {
