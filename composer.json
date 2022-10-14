@@ -1,19 +1,25 @@
 {
     "name": "know-that/log-viewer",
-    "type": "composer-plugin",
-    "autoload": {
-        "psr-4": {
-            "Knowthat\\LogViewer\\": "src/"
-        }
-    },
+    "description": "The Know That log viewer is the view page of the larravel log.",
+    "keywords": [
+        "laravel",
+        "log",
+        "view",
+        "log view"
+    ],
     "authors": [
         {
             "name": "wangfeiyang",
             "email": "knowthat@qq.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Knowthat\\LogViewer\\": "src/"
+        }
+    },
     "require": {
-        "php": ">=7.2"
+        "php": "^7.0"
     },
     "extra": {
         "laravel": {
