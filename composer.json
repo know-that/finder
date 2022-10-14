@@ -1,0 +1,25 @@
+{
+    "name": "knowthat/log-viewer",
+    "type": "composer-plugin",
+    "autoload": {
+        "psr-4": {
+            "Knowthat\\LogViewer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wangfeiyang",
+            "email": "knowthat@qq.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KnowThat\\LogViewer\\Provider"
+            ]
+        }
+    }
+}
