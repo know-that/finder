@@ -32,7 +32,7 @@
                 "KnowThat\\LaravelLogger\\LoggerProvider"
             ],
             "aliases": {
-                "Debugbar": "KnowThat\\LaravelLogger\\Facades"
+                "Logger": "KnowThat\\LaravelLogger\\Facades\\Logger"
             }
         }
     }
