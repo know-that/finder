@@ -6,7 +6,20 @@ use Illuminate\Support\ServiceProvider;
 
 class Provider extends ServiceProvider
 {
-    public function boot()
+    /**
+     * Register services.
+     * @return void
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap services.
+     * @return void
+     */
+    public function boot(): void
     {
         // 加载路由
         $this->loadRoutesFrom(__DIR__ . '/route.php');
