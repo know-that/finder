@@ -1,6 +1,6 @@
 <?php
 
-namespace KnowThat\LogViewer;
+namespace KnowThat\LaravelLogger;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -26,7 +26,7 @@ class LoggerProvider extends ServiceProvider
 
         // 发布配置文件
         $this->publishes([
-            __DIR__.'/config.php' => config_path('know-that/log-viewer.php')
+            __DIR__.'/config.php' => config_path('know-that/laravel-logger.php')
         ], 'kt.lv.config');
     }
 }

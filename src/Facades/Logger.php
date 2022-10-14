@@ -1,8 +1,9 @@
 <?php
-namespace KnowThat\Test\Facades;
+
+namespace KnowThat\LaravelLogger\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use KnowThat\LogViewer\Services\LoggerService;
+use KnowThat\LaravelLogger\Services\LoggerService;
 
 class Test extends Facade
 {

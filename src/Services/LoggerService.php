@@ -1,6 +1,6 @@
 <?php
 
-namespace KnowThat\LogViewer\Services;
+namespace KnowThat\LaravelLogger\Services;
 
 class LoggerService
 {

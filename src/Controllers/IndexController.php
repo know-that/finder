@@ -1,6 +1,6 @@
 <?php
 
-namespace KnowThat\LogViewer\Controllers;
+namespace KnowThat\LaravelLogger\Controllers;
 
 class IndexController
 {
