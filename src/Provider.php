@@ -1,10 +1,10 @@
 <?php
 
-namespace KnowThat\LaravelLogger;
+namespace KnowThat\Finder;
 
 use Illuminate\Support\ServiceProvider;
 
-class LoggerProvider extends ServiceProvider
+class Provider extends ServiceProvider
 {
     /**
      * Register services.
@@ -24,9 +24,13 @@ class LoggerProvider extends ServiceProvider
         // 加载路由
         $this->loadRoutesFrom(__DIR__ . '/route.php');
 
-        // 发布配置文件
+        // 视图
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'kt.finder');
+
+        // 资源文件
         $this->publishes([
-            __DIR__.'/config.php' => config_path('know-that/laravel-logger.php')
-        ], 'kt.lv.config');
+            __DIR__.'/config.php' => config_path('know-that/finder.php'),
+            __DIR__.'/../public' => public_path('vendor/kt.finder'),
+        ], 'kt.finder');
     }
 }

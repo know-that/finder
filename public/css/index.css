@@ -1,0 +1,13 @@
+.layui-table .name {
+    font-size: 18px;
+}
+.layui-table .name i {
+    font-size: 24px;
+}
+
+.layui-layer-content {
+    padding: 10px 20px;
+    white-space: break-spaces;
+    font-size: 16px;
+    line-height: 26px;
+}

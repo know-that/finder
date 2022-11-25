@@ -1,0 +1,23 @@
+{
+  "id": "3791968",
+  "name": "kt.finder",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8065292",
+      "name": "folder",
+      "font_class": "folder",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "29178672",
+      "name": "FileTextFilled",
+      "font_class": "FileTextFilled",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    }
+  ]
+}

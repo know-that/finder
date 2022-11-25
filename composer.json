@@ -1,6 +1,6 @@
 {
-    "name": "know-that/laravel-logger",
-    "description": "The know-that/laravel-logger is the view page of the larravel log.",
+    "name": "know-that/finder",
+    "description": "The know-that/finder is the view page of the larravel log or other files.",
     "keywords": [
         "laravel",
         "log",
@@ -16,11 +16,11 @@
     ],
     "require": {
         "php": ">=7.2",
-        "laravel/framework": ">=5.8"
+        "laravel/framework": ">=6.0"
     },
     "autoload": {
         "psr-4": {
-            "KnowThat\\LaravelLogger\\": "src"
+            "KnowThat\\Finder\\": "src"
         }
     },
     "extra": {
@@ -29,7 +29,7 @@
         },
         "laravel": {
             "providers": [
-                "KnowThat\\LaravelLogger\\LoggerProvider"
+                "Provider"
             ]
         }
     }
