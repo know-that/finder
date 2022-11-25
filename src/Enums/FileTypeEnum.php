@@ -7,7 +7,11 @@ enum FileTypeEnum: string
     case Dir = 'dir';
     case File = 'file';
 
-    public function text()
+    /**
+     * 枚举文本转换
+     * @return string
+     */
+    public function text(): string
     {
         return match($this) {
             self::Dir => '文件夹',

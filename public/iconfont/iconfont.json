@@ -6,16 +6,23 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "8065292",
-      "name": "folder",
+      "icon_id": "3972474",
+      "name": "暂无数据",
+      "font_class": "zanwushuju",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "2295983",
+      "name": "folder-open",
       "font_class": "folder",
-      "unicode": "e617",
-      "unicode_decimal": 58903
+      "unicode": "e60f",
+      "unicode_decimal": 58895
     },
     {
       "icon_id": "29178672",
       "name": "FileTextFilled",
-      "font_class": "FileTextFilled",
+      "font_class": "file",
       "unicode": "e65d",
       "unicode_decimal": 58973
     }

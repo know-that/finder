@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/vendor/kt.logger/layui/css/layui.css">
-    <link rel="stylesheet" href="/vendor/kt.logger/iconfont/iconfont.css">
-    <link rel="stylesheet" href="/vendor/kt.logger/css/index.css">
+    <link rel="stylesheet" href="/vendor/kt.finder/layui/css/layui.css">
+    <link rel="stylesheet" href="/vendor/kt.finder/iconfont/iconfont.css">
+    <link rel="stylesheet" href="/vendor/kt.finder/css/index.css">
 </head>
 <body style="padding: 50px">
     <div class="layui-breadcrumb">
@@ -20,6 +20,7 @@
                 <th>名称</th>
                 <th>类型</th>
                 <th>大小</th>
+                <th>权限</th>
                 <th>修改日期</th>
             </tr>
         </thead>
@@ -43,6 +44,7 @@
                 </td>
                 <td>{{ $item['type_text']  }}</td>
                 <td>{{ $item['size_text']  }}</td>
+                <td>{{ $item['perms']  }}</td>
                 <td>{{ $item['m_time']  }}</td>
             </tr>
         @endforeach
@@ -57,7 +59,7 @@
         </tbody>
     </table>
 
-    <script src="/vendor/kt.logger/layui/layui.js"></script>
-    <script src="/vendor/kt.logger/js/index.js"></script>
+    <script src="/vendor/kt.finder/layui/layui.js"></script>
+    <script src="/vendor/kt.finder/js/index.js"></script>
 </body>
 </html>

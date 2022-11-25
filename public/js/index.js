@@ -8,7 +8,7 @@ const show = (data) => {
     $.ajax({
         type: "get",
         dataType: "json",
-        url: `/know-that/laravel-logger/contents`,
+        url: `/know-that/finder/contents`,
         async: true,
         data: data,
         success: (data) => {
