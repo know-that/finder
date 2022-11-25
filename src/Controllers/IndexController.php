@@ -54,7 +54,14 @@ class IndexController
                 ->ignoreDotFiles(false)
                 ->ignoreUnreadableDirs()
                 ->sort(function (\SplFileInfo $a, \SplFileInfo $b) {
-                    $strCaseCmp = strcasecmp($a->getType(), $b->getType());
+                    try {
+                        $typeA = $a->getType();
+                        $typeB = $b->getType();
+                    } catch (RuntimeException) {
+                        $typeA = null;
+                        $typeB = null;
+                    }
+                    $strCaseCmp = strcasecmp($typeA, $typeB);
                     if ($strCaseCmp === 0) {
                         return strcasecmp($a->getFilename(), $b->getFilename());
                     }
@@ -68,33 +75,40 @@ class IndexController
                     $filepath = $file->getPath();
                     $relativePath = str_replace($this->base, '', $filepath);
                     $name = $file->getFilename();
-                    $type = $file->getType();
+                    $isWritable = $file->isWritable();
+                    $isReadable = $file->isReadable();
+                    $isExecutable = $file->isExecutable();
                     try {
+                        $type = $file->getType();
                         $size = $file->getSize();
                         $aTime = $file->getATime();
                         $cTime = $file->getCTime();
                         $mTime = $file->getMTime();
-                        $perms = $file->getPerms();
                     } catch (RuntimeException) {
+                        $type = '-';
                         $size = '-';
                         $aTime = '-';
                         $cTime = '-';
                         $mTime = '-';
-                        $perms = '-';
                     }
                     $data[] = [
-                        'real_path'     => $file->getPath(), // 绝对路径
-                        'path'          => $relativePath . '/' . $name,
-                        'relative_path' => $relativePath, // 相对路径
-                        'name'          => $file->getFilename(), // 文件名
-                        'type'          => $type,
-                        'type_text'     => FileTypeEnum::tryFrom($type)?->text() ?? '-',
-                        'size'          => $size,
-                        'size_text'     => $service->getByteSize($size),
-                        'perms'         => $perms,
-                        'a_time'        => Carbon::createFromTimestamp($aTime)->toDateTimeString(), // 上次访问时间
-                        'c_time'        => Carbon::createFromTimestamp($cTime)->toDateTimeString(), // 创建时间
-                        'm_time'        => Carbon::createFromTimestamp($mTime)->toDateTimeString(), // 上次修改时间
+                        'real_path'             => $file->getPath(), // 绝对路径
+                        'path'                  => $relativePath . '/' . $name,
+                        'relative_path'         => $relativePath, // 相对路径
+                        'name'                  => $file->getFilename(), // 文件名
+                        'type'                  => $type,
+                        'type_text'             => FileTypeEnum::tryFrom($type)?->text() ?? '-',
+                        'size'                  => $size,
+                        'size_text'             => $service->getByteSize($size),
+                        'is_readable'           => (int) $isReadable,
+                        'is_readable_text'      => $isReadable ? '可读' : '不可读',
+                        'is_writable'           => (int) $isWritable,
+                        'is_writable_text'      => $isWritable ? '可写' : '不可写',
+                        'is_executable'         => (int) $isExecutable,
+                        'is_executable_text'    => $isExecutable ? '可执行' : '不可执行',
+                        'a_time'                => Carbon::createFromTimestamp($aTime)->toDateTimeString(), // 上次访问时间
+                        'c_time'                => Carbon::createFromTimestamp($cTime)->toDateTimeString(), // 创建时间
+                        'm_time'                => Carbon::createFromTimestamp($mTime)->toDateTimeString(), // 上次修改时间
                     ];
                 }
             }

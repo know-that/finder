@@ -44,7 +44,11 @@
                 </td>
                 <td>{{ $item['type_text']  }}</td>
                 <td>{{ $item['size_text']  }}</td>
-                <td>{{ $item['perms']  }}</td>
+                <td>
+                    <span class="{{ $item['is_readable'] ? 'layui-font-green' : 'layui-font-red' }}">{{ $item['is_readable_text'] }}</span> /
+                    <span class="{{ $item['is_writable'] ? 'layui-font-green' : 'layui-font-red' }}">{{ $item['is_writable_text'] }}</span> /
+                    <span class="{{ $item['is_executable'] ? 'layui-font-green' : 'layui-font-red' }}">{{ $item['is_executable_text'] }}</span>
+                </td>
                 <td>{{ $item['m_time']  }}</td>
             </tr>
         @endforeach
