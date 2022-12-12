@@ -1,1 +1,1 @@
-# know-that log-viewer
+# know-that finder
