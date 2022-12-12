@@ -1,11 +1,12 @@
 {
     "name": "know-that/finder",
-    "description": "The know-that/finder is the view page of the larravel log or other files.",
+    "description": "The know-that/finder is the view page of the laravel log or other files.",
     "keywords": [
-        "laravel",
+        "finder",
         "log",
         "view",
-        "log view"
+        "log view",
+        "laravel"
     ],
     "license": "MIT",
     "authors": [
@@ -16,7 +17,9 @@
     ],
     "require": {
         "php": ">=7.2",
-        "laravel/framework": ">=6.0"
+        "symfony/finder": "^5.0",
+        "illuminate/http": "^6.0",
+        "illuminate/collections": "^8.0"
     },
     "autoload": {
         "psr-4": {

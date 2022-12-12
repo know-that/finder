@@ -1,30 +1,96 @@
-const layer = layui.layer
-const $ = layui.$
-const show = (data) => {
-    const loading = layer.open({
-        type: 3
-    })
+const api = axios.create({
+    timeout: 60000
+})
+api.interceptors.response.use(
+    (response) => {
+        return response
+    },
+    (error) => {
+        return Promise.reject(error)
+    }
+)
 
-    $.ajax({
-        type: "get",
-        dataType: "json",
-        url: `/know-that/finder/contents`,
-        async: true,
-        data: data,
-        success: (data) => {
-            layer.open({
-                type: 1,
-                shadeClose: true,
-                title: data.name,
-                content: data.contents
+new Vue({
+    el: '#app',
+    data: () => ({
+        active: [],
+        avatar: null,
+        open: [],
+        users: [],
+        props: {
+            label: 'name',
+            children: 'children',
+            isLeaf: 'isLeaf'
+        },
+        items: [],
+        file: {},
+        loading: false,
+        visible: false,
+        error: {}
+    }),
+    methods: {
+        /**
+         * 目录树加载
+         * @param node
+         * @param resolve
+         * @returns {Promise<void>}
+         */
+        async loadNode(node, resolve) {
+            let data = []
+            let path = node.level === 0 ? '/' : node.data.path
+            let result = await this.getCatalogues(path)
+            result.forEach(item => {
+                data.push({
+                    name: item.name,
+                    path: item.path,
+                    relative_path: item.relative_path,
+                    isLeaf: item.type !== 'dir',
+                    type: item.type
+                })
+            })
+            resolve(data)
+        },
+
+        /**
+         * 目录数据
+         * @param path
+         * @returns {Promise<AxiosResponse<any>>}
+         */
+        async getCatalogues(path = '/') {
+            return await api.get('/know-that/finder/catalogues', {
+                params: {
+                    path
+                }
+            })
+            .then(res => {
+                return res.data
             })
         },
-        error: (data) => {
-            layer.msg(data?.responseJSON?.message || '接口异常', {
-                offset: [30]
-            })
-        }
-    })
 
-    layer.close(loading)
-}
+        /**
+         * 文件内容
+         * @param params
+         */
+        async getFile(params) {
+            if (params.type !== 'file') {
+                return;
+            }
+            this.loading = true
+            await api.get('/know-that/finder/contents', {
+                params: {
+                    path: params.relative_path,
+                    name: params.name
+                }
+            })
+            .then(res => {
+                this.file = res.data
+            })
+            .catch(res => {
+                this.file = {}
+                this.error = res
+            })
+
+            this.loading = false
+        }
+    }
+})
