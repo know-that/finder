@@ -20,13 +20,13 @@ class IndexController
      * 文件路径前缀
      * @var string
      */
-    private string $base;
+    private $base;
 
     /**
      * 文件路径前缀名称
      * @var string
      */
-    private string $baseName;
+    private $baseName;
 
     public function __construct()
     {

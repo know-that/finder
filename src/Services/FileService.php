@@ -20,19 +20,19 @@ class FileService implements IteratorAggregate, Countable, JsonSerializable
      * 文件路径前缀
      * @var string
      */
-    readonly string $base;
+    private $base;
 
     /**
      * 文件路径前缀名称
      * @var string
      */
-    readonly string $baseName;
+    private $baseName;
 
     /**
      * 当前 data
      * @var Collection
      */
-    public Collection $data;
+    public $data;
 
     public function __construct()
     {
