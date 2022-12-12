@@ -63,7 +63,7 @@ class IndexController
                     try {
                         $typeA = $a->getType();
                         $typeB = $b->getType();
-                    } catch (RuntimeException) {
+                    } catch (RuntimeException $e) {
                         $typeA = null;
                         $typeB = null;
                     }
@@ -79,7 +79,7 @@ class IndexController
             } else {
                 $data = [];
             }
-        } catch (DirectoryNotFoundException) {
+        } catch (DirectoryNotFoundException $e) {
             $data =  [];
         }
 

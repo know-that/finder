@@ -122,7 +122,7 @@ class FileService implements IteratorAggregate, Countable, JsonSerializable
             $aTime = $file->getATime();
             $cTime = $file->getCTime();
             $mTime = $file->getMTime();
-        } catch (RuntimeException) {
+        } catch (RuntimeException $e) {
             $type = '-';
             $size = '-';
             $aTime = '-';
@@ -192,9 +192,9 @@ class FileService implements IteratorAggregate, Countable, JsonSerializable
 
     /**
      * 转json的时候序列化
-     * @return mixed
+     * @return array
      */
-    public function jsonSerialize(): mixed
+    public function jsonSerialize(): array
     {
         return $this->data->toArray();
     }
