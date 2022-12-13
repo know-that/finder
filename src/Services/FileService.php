@@ -14,19 +14,11 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class FileService implements IteratorAggregate, Countable, JsonSerializable
 {
-    use ContentsTrait;
-
     /**
      * 文件路径前缀
      * @var string
      */
     private $base;
-
-    /**
-     * 文件路径前缀名称
-     * @var string
-     */
-    private $baseName;
 
     /**
      * 当前 data
@@ -38,8 +30,6 @@ class FileService implements IteratorAggregate, Countable, JsonSerializable
     {
         $base = config('know-that.finder.base');
         $this->base = $base === '/' ? '' : $base;
-        $names = array_filter(explode('/', $this->base));
-        $this->baseName = $names[count($names) - 1] ?? '根';
     }
 
     /**
