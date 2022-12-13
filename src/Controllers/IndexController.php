@@ -100,7 +100,7 @@ class IndexController
             $finder = new Finder();
             $finder->depth(0)->files()->name($name)->ignoreDotFiles(false)->in($this->base . $path);
             $data = (new FileService)->find($finder)->getIterator();
-        } catch (DirectoryNotFoundException) {
+        } catch (DirectoryNotFoundException $e) {
             $data = Collection::make();
         }
 
