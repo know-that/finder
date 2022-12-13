@@ -10,6 +10,8 @@
     @foreach($configFinder['default_cdn']['js'] as $item)
     <script src="{{ $item  }}"></script>
     @endforeach
+
+    <title>know-that/finder</title>
 </head>
 <body>
     <div id="app">
