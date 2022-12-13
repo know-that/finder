@@ -2,6 +2,7 @@
 
 namespace KnowThat\Finder;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class Provider extends ServiceProvider
@@ -32,5 +33,8 @@ class Provider extends ServiceProvider
             __DIR__.'/config.php' => config_path('know-that/finder.php'),
             __DIR__.'/../public' => public_path('vendor/kt.finder'),
         ], 'kt.finder');
+
+        // 与所有视图分享配置
+        View::share('configFinder', config('know-that.finder'));
     }
 }

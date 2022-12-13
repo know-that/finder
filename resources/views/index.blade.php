@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <link rel="stylesheet" href="/vendor/kt.finder/css/index.css">
+    @foreach($configFinder['default_cdn']['css'] as $item)
+        <link rel="stylesheet" href="{{ $item }}">
+    @endforeach
+    <link rel="stylesheet" href="{{ $configFinder['static_url'] }}/vendor/kt.finder/css/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    @foreach($configFinder['default_cdn']['js'] as $item)
+    <script src="{{ $item  }}"></script>
+    @endforeach
 </head>
 <body>
     <div id="app">
@@ -69,68 +75,11 @@
             :title="file.path"
             :visible.sync="visible"
             :modal-append-to-body="false"
-            :close-on-click-modal="false"
             :before-close="() => visible = false">
             <span>@{{ file.contents }}</span>
         </el-dialog>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script src="/vendor/kt.finder/js/index.js"></script>
+    <script src="{{ $configFinder['static_url'] }}/vendor/kt.finder/js/index.js"></script>
 </body>
 </html>
-
-{{--<!doctype html>--}}
-{{--<html>--}}
-{{--<head>--}}
-{{--    <meta charset="utf-8">--}}
-{{--    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">--}}
-{{--    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">--}}
-{{--    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">--}}
-{{--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>--}}
-{{--    <link rel="stylesheet" href="/vendor/kt.finder/iconfont/iconfont.css">--}}
-{{--</head>--}}
-{{--<body>--}}
-{{--    <div id="app">--}}
-{{--        <v-btn--}}
-{{--            elevation="2"--}}
-{{--            plain--}}
-{{--        >321132</v-btn>--}}
-{{--    </div>--}}
-{{--    <div class="layui-row">--}}
-{{--        <div class="layui-col-md3">--}}
-{{--            <div id="catalogues"></div>--}}
-{{--        </div>--}}
-
-{{--        <div class="layui-col-md9">--}}
-{{--            <div class="layui-card">--}}
-{{--                <div class="layui-card-header">卡片面板</div>--}}
-{{--                <div class="layui-card-body">--}}
-{{--                    <table class="layui-table">--}}
-{{--                        <thead>--}}
-{{--                        <tr>--}}
-{{--                            <th lay-data="{width:200}">名称</th>--}}
-{{--                            <th>类型</th>--}}
-{{--                            <th>大小</th>--}}
-{{--                            <th>权限</th>--}}
-{{--                            <th>修改日期</th>--}}
-{{--                        </tr>--}}
-{{--                        </thead>--}}
-{{--                        <tbody>--}}
-
-{{--                        </tbody>--}}
-{{--                    </table>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
-{{--    <script src="/vendor/kt.finder/layui/layui.js"></script>--}}
-{{--    <script src="/vendor/kt.finder/iconfont/iconfont.js"></script>--}}
-{{--    <script src="/vendor/kt.finder/js/index.js"></script>--}}
-{{--</body>--}}
-{{--</html>--}}

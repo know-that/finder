@@ -7,35 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use KnowThat\Finder\Services\FileService;
-use KnowThat\Finder\ViewTrait;
 use RuntimeException;
 use Symfony\Component\Finder\Exception\DirectoryNotFoundException;
 use Symfony\Component\Finder\Finder;
 
-class IndexController
+class IndexController extends Controller
 {
-    use ViewTrait;
-
-    /**
-     * 文件路径前缀
-     * @var string
-     */
-    private $base;
-
-    /**
-     * 文件路径前缀名称
-     * @var string
-     */
-    private $baseName;
-
-    public function __construct()
-    {
-        $base = config('know-that.finder.base');
-        $this->base = $base === '/' ? '' : $base;
-        $names = array_filter(explode('/', $this->base));
-        $this->baseName = $names[count($names) - 1] ?? '根';
-    }
-
     /**
      * 列表
      * @return Response
