@@ -31,12 +31,11 @@
 .tree .el-tree-node__loading-icon {
     width: 24px;
     height: 24px;
-    position: absolute;
-    top: 50%;
-    margin-top: -12px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
+    margin-top: 2px;
 }
 .tree .el-tree-node__content .custom-tree-node {
     display: flex;
