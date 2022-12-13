@@ -15,3 +15,7 @@ $ php artisan vendor:publish --tag=kt.finder --force
 
 ## 访问
 运行 `php artisan serve`，打开对应链接如：`http://127.0.0.1:8000/know-that/finder`
+
+## 可替代品（日志可视化）
+https://github.com/rap2hpoutre/laravel-log-viewer  
+https://github.com/opcodesio/log-viewer
