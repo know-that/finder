@@ -52,6 +52,7 @@
                             class="content"
                             :data="file.content_items"
                             border>
+                            <el-table-column prop="date" label="序号" width="50" type="index" align="center"></el-table-column>
                             <el-table-column prop="date" label="日期" width="180"></el-table-column>
                             <el-table-column prop="type" label="环境" width="100"></el-table-column>
                             <el-table-column prop="level" label="级别" width="100">

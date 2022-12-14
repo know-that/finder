@@ -4,6 +4,7 @@ namespace KnowThat\Finder\Services;
 
 use Carbon\Carbon;
 use Countable;
+use Generator;
 use Illuminate\Support\Collection;
 use IteratorAggregate;
 use JsonSerializable;
@@ -77,7 +78,7 @@ class FileService implements IteratorAggregate, Countable, JsonSerializable
      * 获取文件数据单个
      *
      * @param Finder $finder
-     * @return FileService
+     * @return $this
      */
     public function find(Finder $finder): self
     {
@@ -88,6 +89,27 @@ class FileService implements IteratorAggregate, Countable, JsonSerializable
         }
 
         $this->data = $data;
+        return $this;
+    }
+
+    /**
+     * 生成内容明细
+     * @return $this
+     */
+    public function generateContentItems(): self
+    {
+        $contents = $this->data->get('contents');
+
+        if ($contents) {
+            // 正则匹配
+            preg_match_all('/\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}([\+-]\d{4})?\].*/', $contents, $data);
+            $contentItems = [];
+            foreach ($this->yieldContents($data) as $item) {
+                $contentItems[] = $item;
+            }
+            $this->data->put('content_items', $contentItems);
+        }
+
         return $this;
     }
 
@@ -144,6 +166,31 @@ class FileService implements IteratorAggregate, Countable, JsonSerializable
         }
 
         return Collection::make((object) $data);
+    }
+
+    /**
+     * contents 生成器
+     *
+     * @param array $data
+     * @return Generator
+     */
+    private function yieldContents(array $data): Generator
+    {
+        foreach ($data as $item) {
+            foreach ($item as $value) {
+                $level = 'error';
+                preg_match('/^\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}([\+-]\d{4})?)\](?:.*?(\w+)\.|.*?)' . $level . ': (.*?)( in .*?:[0-9]+)?$/i', $value, $current);
+                $current[2] = $level;
+                if (!empty($current[4])) {
+                    yield [
+                        'date'      => $current[1],
+                        'level'     => $current[2],
+                        'type'      => $current[3],
+                        'content'   => $current[0],
+                    ];
+                }
+            }
+        }
     }
 
     /**

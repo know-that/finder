@@ -76,31 +76,10 @@ class IndexController extends Controller
         try {
             $finder = new Finder();
             $finder->depth(0)->files()->name($name)->ignoreDotFiles(false)->in($this->base . $path);
-            $data = (new FileService)->find($finder)->getIterator();
+            $file = (new FileService)->find($finder)->generateContentItems();
+            $data = $file->getIterator();
         } catch (DirectoryNotFoundException $e) {
             $data = Collection::make();
-        }
-
-        $contents = $data->get('contents');
-        if ($data->get('contents')) {
-            preg_match_all('/\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}([\+-]\d{4})?\].*/', $contents, $headings);
-            $contentItems = [];
-            foreach ($headings as $heading) {
-                foreach ($heading as $headItem) {
-                    $level = 'error';
-                    preg_match('/^\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}([\+-]\d{4})?)\](?:.*?(\w+)\.|.*?)' . $level . ': (.*?)( in .*?:[0-9]+)?$/i', $headItem, $current);
-                    $current[2] = $level;
-                    if (!empty($current[4])) {
-                        $contentItems[] = [
-                            'date'      => $current[1],
-                            'level'     => $current[2],
-                            'type'      => $current[3],
-                            'content'   => $current[0],
-                        ];
-                    }
-                }
-            }
-            $data->put('content_items', $contentItems);
         }
 
         return response()->json($data);
